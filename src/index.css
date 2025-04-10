@@ -1,58 +1,13 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 210 30% 8%;
     --foreground: 210 40% 98%;
 
     --card: 222.2 84% 4.9%;
@@ -79,23 +34,102 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --radius: 0.5rem;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-navy-dark text-slate-light font-sans antialiased;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary) var(--primary);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-dark rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-highlight/50;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply relative px-4 py-2 text-sm font-medium text-slate hover:text-highlight transition-colors duration-300 
+           after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-highlight after:bottom-0 after:left-0 
+           after:transition-all after:duration-300 hover:after:w-full;
+  }
+  
+  .section-heading {
+    @apply font-mono text-highlight mb-4 text-xl;
+  }
+  
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-6 text-white;
+  }
+  
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 py-24;
+  }
+  
+  .skill-tag {
+    @apply px-3 py-1 bg-navy-light text-highlight text-sm rounded-md font-mono transition-all 
+           hover:bg-highlight/20 hover:translate-y-[-2px] cursor-default;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg hover:shadow-highlight/20;
+  }
+  
+  .social-icon {
+    @apply text-slate hover:text-highlight transition-colors duration-300 w-6 h-6;
+  }
+  
+  /* For 3D objects hover state */
+  .obj-hover {
+    @apply hover:cursor-pointer transition-transform duration-300 hover:scale-110;
+  }
+  
+  /* Staggered animation for timeline */
+  .staggered-animate > * {
+    @apply opacity-0;
+    animation: fade-up 0.5s ease-out forwards;
+  }
+  
+  .staggered-animate > *:nth-child(1) { animation-delay: 0.1s; }
+  .staggered-animate > *:nth-child(2) { animation-delay: 0.2s; }
+  .staggered-animate > *:nth-child(3) { animation-delay: 0.3s; }
+  .staggered-animate > *:nth-child(4) { animation-delay: 0.4s; }
+  .staggered-animate > *:nth-child(5) { animation-delay: 0.5s; }
+  .staggered-animate > *:nth-child(6) { animation-delay: 0.6s; }
+  .staggered-animate > *:nth-child(7) { animation-delay: 0.7s; }
+  .staggered-animate > *:nth-child(8) { animation-delay: 0.8s; }
+  .staggered-animate > *:nth-child(9) { animation-delay: 0.9s; }
+  .staggered-animate > *:nth-child(10) { animation-delay: 1s; }
+  
+  .glass-card {
+    @apply backdrop-blur-md bg-navy-light/30 border border-slate/10 shadow-xl;
+  }
+  
+  /* Parallax effect for sections */
+  .parallax {
+    transition: transform 0.2s ease-out;
   }
 }
