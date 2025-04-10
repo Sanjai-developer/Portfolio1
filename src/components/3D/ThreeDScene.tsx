@@ -27,7 +27,7 @@ const MouseFollowObject = ({ position, color = '#64ffda', scale = 1 }) => {
   });
 
   return (
-    <mesh ref={ref} position={position} scale={scale}>
+    <mesh ref={ref} position={position as any} scale={scale}>
       <octahedronGeometry args={[1, 0]} />
       <meshStandardMaterial color={color} wireframe />
     </mesh>
@@ -40,7 +40,7 @@ const FloatingText = ({ text, position, size = 0.5, color = '#64ffda', rotation 
     <Float speed={4} rotationIntensity={0.5} floatIntensity={2}>
       <Text
         position={position}
-        rotation={rotation}
+        rotation={rotation as any}
         fontSize={size}
         color={color}
         font="/fonts/SpaceMono-Regular.ttf"
@@ -64,13 +64,13 @@ const TechStack = ({ position = [0, 0, 0], items }) => {
   });
 
   return (
-    <group ref={groupRef} position={position}>
+    <group ref={groupRef} position={position as any}>
       {items.map((item, index) => {
         const angle = (index / items.length) * Math.PI * 2;
         const radius = 4;
         const x = Math.cos(angle) * radius;
         const z = Math.sin(angle) * radius;
-        const y = Math.sin(clock => clock * 0.5 + index) * 0.5;
+        const y = Math.sin(index) * 0.5; // Fixed this line to remove the function that was causing an error
         
         return (
           <FloatingText 
