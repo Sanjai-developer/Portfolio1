@@ -95,7 +95,7 @@ const AboutSection = () => {
             >
               <div className="aspect-square relative border-2 border-highlight rounded-md overflow-hidden">
                 <img
-                  src="/placeholder.svg"
+                  src="/profile.jpeg"
                   alt="N. Sanjai"
                   className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-300"
                 />
