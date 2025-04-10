@@ -70,7 +70,7 @@ const TechStack = ({ position = [0, 0, 0], items }) => {
         const radius = 4;
         const x = Math.cos(angle) * radius;
         const z = Math.sin(angle) * radius;
-        const y = Math.sin(index) * 0.5; // Fixed this line to remove the function that was causing an error
+        const y = Math.sin(index) * 0.5;
         
         return (
           <FloatingText 
@@ -96,7 +96,7 @@ const ThreeDScene = () => {
 
   return (
     <div className="w-full h-[60vh] md:h-[80vh]">
-      <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 45 }}>
+      <Canvas shadows dpr={[1, 1.5]} camera={{ position: [0, 0, 10], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
         <pointLight position={[-10, -10, -10]} intensity={0.5} />
