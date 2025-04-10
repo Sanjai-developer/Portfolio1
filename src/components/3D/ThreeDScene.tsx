@@ -1,8 +1,7 @@
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Text, Float, useGLTF, PerspectiveCamera } from '@react-three/drei';
-import { Vector3, Euler, MathUtils, Group } from 'three';
+import { OrbitControls, Text, Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 // Helper component for an object that follows the mouse
@@ -21,15 +20,15 @@ const MouseFollowObject = ({ position, color = '#64ffda', scale = 1 }) => {
       vec.add(camera.position);
       
       // Smooth follow
-      ref.current.position.x = MathUtils.lerp(ref.current.position.x, vec.x, 0.1);
-      ref.current.position.y = MathUtils.lerp(ref.current.position.y, vec.y, 0.1);
+      ref.current.position.x = THREE.MathUtils.lerp(ref.current.position.x, vec.x, 0.1);
+      ref.current.position.y = THREE.MathUtils.lerp(ref.current.position.y, vec.y, 0.1);
     }
   });
 
   return (
     <mesh ref={ref} position={position as any} scale={scale}>
       <octahedronGeometry args={[1, 0]} />
-      <meshStandardMaterial color={color} wireframe />
+      <meshStandardMaterial color={color} wireframe opacity={0.6} transparent />
     </mesh>
   );
 };
@@ -43,7 +42,6 @@ const FloatingText = ({ text, position, size = 0.5, color = '#64ffda', rotation 
         rotation={rotation as any}
         fontSize={size}
         color={color}
-        font="/fonts/SpaceMono-Regular.ttf"
         maxWidth={5}
         textAlign="center"
       >
@@ -55,7 +53,7 @@ const FloatingText = ({ text, position, size = 0.5, color = '#64ffda', rotation 
 
 // Floating technology icons
 const TechStack = ({ position = [0, 0, 0], items }) => {
-  const groupRef = useRef<Group>(null!);
+  const groupRef = useRef<THREE.Group>(null!);
   
   useFrame(({ clock }) => {
     if (groupRef.current) {
@@ -96,10 +94,10 @@ const ThreeDScene = () => {
 
   return (
     <div className="w-full h-[60vh] md:h-[80vh]">
-      <Canvas shadows dpr={[1, 1.5]} camera={{ position: [0, 0, 10], fov: 45 }}>
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} />
+      <Canvas shadows dpr={[0.5, 1]} camera={{ position: [0, 0, 10], fov: 45 }}>
+        <ambientLight intensity={0.3} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.8} castShadow />
+        <pointLight position={[-10, -10, -10]} intensity={0.3} />
         
         <MouseFollowObject position={[0, 0, 0]} />
         
@@ -113,7 +111,7 @@ const ThreeDScene = () => {
           enablePan={false} 
           minPolarAngle={Math.PI / 2.5} 
           maxPolarAngle={Math.PI / 1.5}
-          rotateSpeed={0.5}
+          rotateSpeed={0.3}
         />
       </Canvas>
     </div>
