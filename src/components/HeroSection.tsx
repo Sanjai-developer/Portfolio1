@@ -1,7 +1,6 @@
-
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, GitHub, Linkedin, Mail } from 'lucide-react';
+import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThreeDScene from './3D/ThreeDScene';
 
@@ -90,7 +89,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               className="social-icon"
             >
-              <GitHub size={24} />
+              <Github size={24} />
             </a>
             <a 
               href="https://www.linkedin.com/in/sanjai-n-b9536328b/" 

@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Send, GitHub, Linkedin, Mail, MessageCircle } from 'lucide-react';
+import { Send, Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -142,7 +141,7 @@ const ContactSection = () => {
                 
                 <div className="flex items-center space-x-4">
                   <div className="bg-highlight/20 p-3 rounded-full">
-                    <GitHub className="h-5 w-5 text-highlight" />
+                    <Github className="h-5 w-5 text-highlight" />
                   </div>
                   <div>
                     <h5 className="text-white font-medium">GitHub</h5>
@@ -183,7 +182,7 @@ const ContactSection = () => {
                   rel="noopener noreferrer"
                   className="p-3 bg-navy-light rounded-full hover:bg-highlight/10 transition-colors"
                 >
-                  <GitHub className="h-5 w-5 text-highlight" />
+                  <Github className="h-5 w-5 text-highlight" />
                 </a>
                 <a 
                   href="https://www.linkedin.com/in/sanjai-n-b9536328b/" 
