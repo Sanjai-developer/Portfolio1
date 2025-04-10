@@ -39,23 +39,27 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-        <InteractiveBackground />
-      </Suspense>
+    <div className="min-h-screen relative overflow-x-hidden bg-navy-dark">
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+          <InteractiveBackground />
+        </Suspense>
+      </div>
       
-      <Navigation />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <EducationSection />
-        <ProjectsSection />
-        <AchievementsSection />
-        <GitHubSection />
-        <ContactSection />
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Navigation />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <SkillsSection />
+          <EducationSection />
+          <ProjectsSection />
+          <AchievementsSection />
+          <GitHubSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };
